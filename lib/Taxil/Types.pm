@@ -12,10 +12,12 @@ subtype _HunkArray, as ArrayRef[ _Hunk ];
 
 coerce _Hunk, from Str, via { \$_ };
 coerce _Hunk, from _HunkArray, via { join q{}, map {; $$_ } @$_ };
+coerce _HunkArray, from _Hunk, via { [ $_ ] };
 
 subtype _PotentialHunk, as (Str | ScalarRef | CodeRef);
 subtype _PotentialHunkArray,
   as ArrayRef[ _PotentialHunk | _PotentialHunkArray ];
+coerce _PotentialHunkArray, from _PotentialHunk, via { [ $_ ] };
 
 coerce _Hunk,
   from _PotentialHunk,
@@ -24,6 +26,10 @@ coerce _Hunk,
     my $rv = $_->();
     return ref $rv ? $rv : \$rv
   };
+
+coerce _Hunk, from _PotentialHunkArray, via {
+  _Hunk->coerce( _HunkArray->coerce($_) )
+};
 
 coerce _HunkArray,
   from _PotentialHunkArray,
