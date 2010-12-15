@@ -1,0 +1,8 @@
+
+there is a master object, a hub, which can handle all dispatch
+
+we dispatch to component objects
+
+component objects have methods that either return (or stream?)  output
+
+
