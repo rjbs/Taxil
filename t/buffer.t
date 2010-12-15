@@ -2,7 +2,9 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
+
+plan skip_all => "this is all super premature";
 
 use Taxil::Buffer;
 
