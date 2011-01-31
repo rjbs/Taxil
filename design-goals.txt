@@ -5,4 +5,25 @@ we dispatch to component objects
 
 component objects have methods that either return (or stream?)  output
 
+== mason comparisons ==
+
+%def -- lose it
+
+%method -- keep it
+
+%shared -- ditch it
+
+%init -- ditch it
+
+%once -- is now BUILD
+
+%doc -- sure, whatever
+
+%flags -- ??
+
+%attr -- basically 'has'
+
+%args -- per method sigs
+
+cleanup -- ?
 
